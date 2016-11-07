@@ -29,92 +29,132 @@
     <div class="col-xs-12">
 
 
-      <nav class="navbar navbar-warning">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <span class="navbar-brand">Stories</span>
-          </div>
-          <div class="navbar-collapse collapse" uib-collapse="isNavCollapsed">
-            <form class="navbar-form navbar-left">
-              <div class="form-group">
-                <input type="text" class="form-control col-sm-8" placeholder="Search">
-              </div>
-              <button class="btn btn-success">New story</button>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-              <li uib-dropdown is-open="status.isAuthorOpen">
-                <a id="author" uib-dropdown-toggle ng-disabled="disabled">
-                  Author <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="author">
-                  <li role="menuitem"><a href="#">Vassya</a></li>
-                  <li role="menuitem"><a href="#">Petia</a></li>
-                  <li role="menuitem"><a href="#">Lena</a></li>
-                  <li class="divider"></li>
-                  <li role="menuitem"><a href="#">Nobody</a></li>
-                </ul>
-              </li>
+      <!--<nav class="navbar navbar-warning">-->
+      <!--<div class="container-fluid">-->
+      <!--<div class="navbar-header">-->
+      <!--<button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">-->
+      <!--<span class="icon-bar"></span>-->
+      <!--<span class="icon-bar"></span>-->
+      <!--<span class="icon-bar"></span>-->
+      <!--</button>-->
+      <!--<span class="navbar-brand">Stories</span>-->
+      <!--</div>-->
+      <!--<div class="navbar-collapse collapse" uib-collapse="isNavCollapsed">-->
+      <!--<form class="navbar-form navbar-left">-->
+      <!--<div class="form-group">-->
+      <!--<input type="text" class="form-control col-sm-8" placeholder="Search">-->
+      <!--</div>-->
+      <!--<button class="btn btn-success">New story</button>-->
+      <!--</form>-->
+      <!--<ul class="nav navbar-nav navbar-right">-->
+      <!--<li uib-dropdown is-open="status.isAuthorOpen">-->
+      <!--<a id="author" uib-dropdown-toggle ng-disabled="disabled">-->
+      <!--Author <span class="caret"></span>-->
+      <!--</a>-->
+      <!--<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="author">-->
+      <!--<li role="menuitem"><a href="#">Vassya</a></li>-->
+      <!--<li role="menuitem"><a href="#">Petia</a></li>-->
+      <!--<li role="menuitem"><a href="#">Lena</a></li>-->
+      <!--<li class="divider"></li>-->
+      <!--<li role="menuitem"><a href="#">Nobody</a></li>-->
+      <!--</ul>-->
+      <!--</li>-->
 
-              <li uib-dropdown is-open="status.isStageOpen">
-                <a id="stage" uib-dropdown-toggle ng-disabled="disabled">
-                  Stage <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="stage">
-                  <li role="menuitem"><a href="#">Idea</a></li>
-                  <li role="menuitem"><a href="#">Draft</a></li>
-                  <li role="menuitem"><a href="#">Ready to review</a></li>
-                  <li role="menuitem"><a href="#">Redy to publish</a></li>
-                  <li role="menuitem"><a href="#">Published</a></li>
-                  <li role="menuitem"><a href="#">Archived</a></li>
-                </ul>
-              </li>
-            </ul>
+      <!--<li uib-dropdown is-open="status.isStageOpen">-->
+      <!--<a id="stage" uib-dropdown-toggle ng-disabled="disabled">-->
+      <!--Stage <span class="caret"></span>-->
+      <!--</a>-->
+      <!--<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="stage">-->
+      <!--<li role="menuitem"><a href="#">Idea</a></li>-->
+      <!--<li role="menuitem"><a href="#">Draft</a></li>-->
+      <!--<li role="menuitem"><a href="#">Ready to review</a></li>-->
+      <!--<li role="menuitem"><a href="#">Redy to publish</a></li>-->
+      <!--<li role="menuitem"><a href="#">Published</a></li>-->
+      <!--<li role="menuitem"><a href="#">Archived</a></li>-->
+      <!--</ul>-->
+      <!--</li>-->
+      <!--</ul>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</nav>-->
+
+      <!--<table class="table table-hover ">-->
+      <!--<thead>-->
+      <!--<tr>-->
+      <!--<th>Title</th>-->
+      <!--<th>Author</th>-->
+      <!--<th>Stage</th>-->
+      <!--<th>Time left</th>-->
+      <!--<th>Time left</th>-->
+      <!--<th>Size</th>-->
+      <!--<th></th>-->
+      <!--</tr>-->
+      <!--</thead>-->
+      <!--<tbody>-->
+      <!--<tr>-->
+      <!--<td><a href="#">British scientists invented pink plywood crocodile with AI</a></td>-->
+      <!--<td>Vassiliy Pupkin</td>-->
+      <!--<td>Idea</td>-->
+      <!--<td>2 days</td>-->
+      <!--<td>200</td>-->
+      <!--<td><span class="glyphicon glyphicon-remove-sign story-table&#45;&#45;remove-btn"></span></td>-->
+      <!--</tr>-->
+      <!--<tr class="active">-->
+      <!--<td><a href="#">Google released new Android</a></td>-->
+      <!--<td>John Doe</td>-->
+      <!--<td>Ready to review</td>-->
+      <!--<td>3 hours</td>-->
+      <!--<td>6570</td>-->
+      <!--<td><span class="glyphicon glyphicon-remove-sign story-table&#45;&#45;remove-btn"></span></td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+      <!--</table>-->
+      <!--</div>-->
+
+      <!--<text-angular ng-model="htmlVariable"></text-angular>-->
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Register</h3>
+            </div>
+            <div class="panel-body">
+
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <label for="screenName" class="col-sm-2 control-label">Name</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="screenName" placeholder="Screen Name" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                  <div class="col-sm-9">
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+                  <div class="col-sm-9">
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Register</button>
+                  </div>
+                </div>
+              </form>
+
+            </div>
           </div>
         </div>
-      </nav>
+      </div>
 
-      <table class="table table-hover ">
-        <thead>
-        <tr>
-          <th>Title</th>
-          <th>Author</th>
-          <th>Stage</th>
-          <th>Time left</th>
-          <th>Time left</th>
-          <th>Size</th>
-          <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td><a href="#">British scientists invented pink plywood crocodile with AI</a></td>
-          <td>Vassiliy Pupkin</td>
-          <td>Idea</td>
-          <td>2 days</td>
-          <td>200</td>
-          <td><span class="glyphicon glyphicon-remove-sign story-table--remove-btn"></span></td>
-        </tr>
-        <tr class="active">
-          <td><a href="#">Google released new Android</a></td>
-          <td>John Doe</td>
-          <td>Ready to review</td>
-          <td>3 hours</td>
-          <td>6570</td>
-          <td><span class="glyphicon glyphicon-remove-sign story-table--remove-btn"></span></td>
-        </tr>
-        </tbody>
-      </table>
+
     </div>
-
   </div>
 </div>
-</div>
-<text-angular ng-model="htmlVariable"></text-angular>
-xdfgbcgfngfmghj
 </body>
 </html>
