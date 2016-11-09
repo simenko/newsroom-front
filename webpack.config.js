@@ -53,9 +53,7 @@ module.exports = {
       inject: 'body'
     }),
     new webpack.DefinePlugin({
-      // put an actual server's IP address here
-      SERVER: JSON.stringify('http://192.168.0.107:3001/api'),
-      SOCKET: JSON.stringify('http://192.168.0.107:3001/')
+      env: JSON.stringify(require('./config'))
     }),
 
   ]
