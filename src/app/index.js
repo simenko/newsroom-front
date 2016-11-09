@@ -10,8 +10,7 @@ import 'font-awesome/less/font-awesome.less';
 import 'textangular/dist/textAngular-sanitize';
 import 'textangular/dist/textAngular.min';
 import 'textangular/dist/textAngular.css';
-import 'angular-ui-grid/ui-grid';
-import 'angular-ui-grid/ui-grid.css';
+import 'angular-smart-table';
 
 import './components';
 import './services';
@@ -19,7 +18,7 @@ import './services';
 export default ng.module('app', [
   'ui.bootstrap',
   'textAngular',
-  'ui.grid',
+  'smart-table',
   'app.components',
   'app.services',
 ]).name;

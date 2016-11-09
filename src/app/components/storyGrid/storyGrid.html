@@ -2,32 +2,29 @@
   <div class="panel-heading story-grid--panel-heading">
     <story-grid-toolbar></story-grid-toolbar>
   </div>
-  <table class="table table-hover ">
+  <table st-table="$ctrl.displayedCollection" st-safe-src="$ctrl.rowCollection" class="table table-hover ">
     <thead>
     <tr>
       <th>Title</th>
       <th>Author</th>
       <th>Stage</th>
-      <th>Time left</th>
-      <th>Size</th>
+      <th st-sort="timeLeft">Time left</th>
+      <th st-sort="size">Size</th>
       <th></th>
+    </tr>
+    <tr>
+      <th colspan="1"><input st-search="title" class="form-control" placeholder="title" type="text"></th>
+      <th colspan="1"><input st-search="author" class="form-control" placeholder="author" type="text"></th>
+      <th colspan="1"><input st-search="stage" class="form-control" placeholder="stage" type="text"></th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <td><a href="#">British scientists invented pink plywood crocodile with AI</a></td>
-      <td>Vassiliy Pupkin</td>
-      <td>Idea</td>
-      <td>2 days</td>
-      <td>200</td>
-      <td><span class="glyphicon glyphicon-remove-sign story-grid--remove-btn"></span></td>
-    </tr>
-    <tr class="active">
-      <td><a href="#">Google released new Android</a></td>
-      <td>John Doe</td>
-      <td>Ready to review</td>
-      <td>3 hours</td>
-      <td>6570</td>
+    <tr ng-repeat="row in $ctrl.displayedCollection">
+      <td><a href="#">{{::row.title}}</a></td>
+      <td>{{::row.author}}</td>
+      <td>{{::row.stage}}</td>
+      <td>{{::row.timeLeft}}</td>
+      <td>{{::row.size}}</td>
       <td><span class="glyphicon glyphicon-remove-sign story-grid--remove-btn"></span></td>
     </tr>
     </tbody>
