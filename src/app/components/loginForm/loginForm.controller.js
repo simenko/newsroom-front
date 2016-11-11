@@ -1,15 +1,23 @@
 export default class loginFormController {
-  constructor(users) {
+  constructor($state, users) {
     'ngInject';
+    this.$state = $state;
     this.users = users;
-    this.user = {
+    this.credentials = {
       email: '',
       password: '',
     };
   }
 
+  $onInit() {
+    if (this.users.currentUser.loggedIn) {
+      alert('you are already logged in');
+    }
+  }
+
   login() {
-    console.log(this.user);
-    this.users.login(this.user);
+    this.users.login(this.credentials)
+      .then(() => this.$state.go('home'))
+      .catch((err) => alert(JSON.stringify(err)));
   }
 }

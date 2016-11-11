@@ -11,28 +11,28 @@
             <label for="screenName" class="col-sm-2 control-label">Name</label>
             <div class="col-sm-9">
               <input type="text" class="form-control" id="screenName" placeholder="Screen Name" required
-                     ng-model="$ctrl.user.name">
+                     ng-model="$ctrl.credentials.name">
             </div>
           </div>
           <div class="form-group">
             <label for="inputEmail" class="col-sm-2 control-label">Email</label>
             <div class="col-sm-9">
               <input type="email" class="form-control" id="inputEmail" placeholder="Email" required
-                     ng-model="$ctrl.user.email">
+                     ng-model="$ctrl.credentials.email">
             </div>
           </div>
           <div class="form-group">
             <label for="inputPassword" class="col-sm-2 control-label">Password</label>
             <div class="col-sm-9">
               <input type="password" class="form-control" id="inputPassword" placeholder="Password" required
-                     ng-model="$ctrl.user.password">
+                     ng-model="$ctrl.credentials.password">
             </div>
           </div>
           <div class="form-group">
             <label for="inputRole" class="col-sm-2 control-label">Role</label>
             <div class="col-sm-9">
               <select class="form-control" id="inputRole"
-                      ng-model="$ctrl.user.role">
+                      ng-model="$ctrl.credentials.role">
                 <option ng-repeat="role in $ctrl.users.roles" value="{{role}}">{{role}}</option>
               </select>
               </div>

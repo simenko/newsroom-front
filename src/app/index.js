@@ -27,4 +27,7 @@ export default ng.module('app', [
   'app.components',
   'app.services',
   'app.routes',
-]).name;
+]).config(['$httpProvider', function($httpProvider) {
+  'ngInject';
+  $httpProvider.defaults.withCredentials = true;
+}]).name;

@@ -4,8 +4,10 @@ export default class users {
     this.$http = $http;
     this.error = '';
     this.list = [];
+    this.currentUser = {};
     this.roles = ['author', 'editor'];
   }
+
   list() {
     return this.$http.get(`${env.API_URL}/users`).then(responce => responce.data);
   }
@@ -15,16 +17,33 @@ export default class users {
   }
 
   register(user) {
-    return this.$http.post(`${env.API_URL}/users/register`, user).then(res => console.log(res))
-      .catch(err => console.log(err));
+    return this.$http.post(`${env.API_URL}/users/register`, user)
+      .then(res => {
+        this.currentUser.id = res.data.id;
+        this.currentUser.name = res.data.name;
+        this.currentUser.role = res.data.role;
+        this.currentUser.loggedIn = true;
+      });
   }
 
   login(user) {
-    return this.$http.post(`${env.API_URL}/users/login`, user).then(responce => console.log(responce));
+    return this.$http.post(`${env.API_URL}/users/login`, user)
+      .then(res => {
+        this.currentUser.id = res.data.id;
+        this.currentUser.name = res.data.name;
+        this.currentUser.role = res.data.role;
+        this.currentUser.loggedIn = true;
+      });
   }
 
   logout() {
-    return this.$http.post(`${env.API_URL}/users/logout`).then(responce => responce.data);
+    return this.$http.post(`${env.API_URL}/users/logout`)
+      .then(() => {
+        this.currentUser.id = null;
+        this.currentUser.name = null;
+        this.currentUser.role = null;
+        this.currentUser.loggedIn = false;
+      });
   }
 
   update(user) {

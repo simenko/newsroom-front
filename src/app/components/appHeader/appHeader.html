@@ -4,7 +4,7 @@
       <li class="nav-item active">
         <a class="nav-link" ui-sref="home">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active" ng-show="$ctrl.isLoggedIn">
+      <li class="nav-item active" ng-show="$ctrl.users.currentUser.loggedIn">
         <a class="nav-link" ui-sref="newsroom">Newsroom </a>
       </li>
       <li class="nav-item">
@@ -13,14 +13,16 @@
       <li class="nav-item">
         <a class="nav-link" ui-sref="info({ page: 'about' })">About </a>
       </li>
-      <li class="nav-item" ng-hide="$ctrl.isLoggedIn">
+      <li class="nav-item" ng-hide="$ctrl.users.currentUser.loggedIn">
         <a class="nav-link" ui-sref="register">Register </a>
       </li>
-      <li class="nav-item" ng-hide="$ctrl.isLoggedIn">
+      <li class="nav-item" ng-hide="$ctrl.users.currentUser.loggedIn">
         <a class="nav-link" ui-sref="login">Log in </a>
       </li>
-      <li class="nav-item" ng-show="$ctrl.isLoggedIn">
-        <a class="nav-link" ui-sref="logout">Log out</a>
+      <li class="nav-item"
+          ng-show="$ctrl.users.currentUser.loggedIn"
+          ng-click="$ctrl.logout()">
+        <a class="nav-link">Log out</a>
       </li>
     </ul>
   </div>
