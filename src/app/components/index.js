@@ -5,14 +5,10 @@ import './appHeader';
 import './infoPage';
 import './loginForm';
 import './registerForm';
-import './newStoryForm';
 import './story';
-import './storyBlock';
-import './storyBlockEditor';
-import './storyBlockToolbar';
+import './storyEditor';
 import './storyGrid';
-import './storyGridToolbar';
-import './storyToolbar';
+import './storyContent';
 
 export default ng.module('app.components', [
   'app.components.app',
@@ -20,12 +16,8 @@ export default ng.module('app.components', [
   'app.components.infoPage',
   'app.components.loginForm',
   'app.components.registerForm',
-  'app.components.newStoryForm',
   'app.components.story',
-  'app.components.storyBlock',
-  'app.components.storyBlockEditor',
-  'app.components.storyBlockToolbar',
+  'app.components.storyContent',
+  'app.components.storyEditor',
   'app.components.storyGrid',
-  'app.components.storyGridToolbar',
-  'app.components.storyToolbar',
 ]).name;
