@@ -1,0 +1,41 @@
+<form class="form" ng-if="$ctrl.editMode">
+  <div class="form-group col-xs-12">
+    <label for="title" class="control-label">Story title</label>
+    <input type="text" class="form-control" id="title" required>
+  </div>
+  <div class="form-group col-xs-12">
+    <label for="description" class="control-label">Description</label>
+    <textarea class="form-control" rows="5" id="description"></textarea>
+  </div>
+  <div class="form-group col-xs-6">
+    <label for="assignee" class="control-label">Assignee</label>
+    <select class="form-control" id="assignee">
+      <option ng-repeat="user in $ctrl.users">{{user.name}}</option>
+    </select>
+  </div>
+  <div class="form-group col-xs-6">
+    <label for="stage" class="control-label">Stage</label>
+    <select class="form-control" id="stage">
+      <option ng-repeat="stage in $ctrl.stages">{{stage}}</option>
+    </select>
+  </div>
+  <!--
+  TODO: assets
+  -->
+  <!--
+ TODO: deadline
+ -->
+  <div class="form-group col-xs-12">
+    <story-editor></story-editor>
+  </div>
+  <div class="form-group col-xs-12">
+    <button type="submit" class="btn btn-default">Save</button>
+  </div>
+</form>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <story-content ng-if="$ctrl.viewMode"></story-content>
+    </div>
+  </div>
+</div>
