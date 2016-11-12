@@ -15,7 +15,7 @@
             <div class="form-group">
               <input type="text" class="form-control col-sm-8" placeholder="Search">
             </div>
-            <button class="btn btn-success">New story</button>
+            <button class="btn btn-success" ui-sref="createStory">New story</button>
           </form>
           <ul class="nav navbar-nav navbar-right">
             <li uib-dropdown is-open="status.isAuthorOpen">
@@ -41,7 +41,7 @@
     </nav>
 
   </div>
-  <table st-table="$ctrl.displayedCollection" st-safe-src="$ctrl.rowCollection" class="table table-hover ">
+  <table st-table="$ctrl.displayedCollection" st-safe-src="$ctrl.stories.list" class="table table-hover ">
     <thead>
     <tr>
       <th>Title</th>
