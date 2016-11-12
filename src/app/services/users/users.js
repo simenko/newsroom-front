@@ -1,6 +1,9 @@
+/* global env */
+
 export default class users {
   constructor($http, session) {
     'ngInject';
+
     this.$http = $http;
     this.session = session;
     this.all = [];
@@ -8,11 +11,11 @@ export default class users {
   }
 
   list() {
-    return this.$http.get(`${env.API_URL}/users`).then(responce => responce.data);
+    return this.$http.get(`${env.API_URL}/users`).then(response => response.data);
   }
 
   read(id) {
-    return this.$http.get(`${env.API_URL}/users/${id}`).then(responce => responce.data);
+    return this.$http.get(`${env.API_URL}/users/${id}`).then(response => response.data);
   }
 
   register(user) {
@@ -31,7 +34,7 @@ export default class users {
   }
 
   update(user) {
-    return this.$http.put(`${env.API_URL}/users/${user.id}`, user).then(responce => responce.data);
+    return this.$http.put(`${env.API_URL}/users/${user.id}`, user).then(response => response.data);
   }
 
   delete() {

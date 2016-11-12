@@ -20,6 +20,6 @@ export default class loginFormController {
   login() {
     this.users.login(this.credentials)
       .then(() => this.$state.go('home'))
-      .catch((err) => alert(JSON.stringify(err)));
+      .catch((err) => alert(JSON.stringify(err.data)));
   }
 }

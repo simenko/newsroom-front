@@ -8,11 +8,7 @@ export default class appHeaderController {
   }
 
   logout() {
-    this.users.logout()
-      .then(() => {
-        console.log (this.users.currentUser)
-        this.$scope.$digest()
-      });
+    this.users.logout();
   }
 
 }
