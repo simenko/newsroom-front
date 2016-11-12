@@ -1,6 +1,8 @@
 export default class loginFormController {
-  constructor($state, users) {
+  constructor($state, users, session) {
     'ngInject';
+
+    this.session = session;
     this.$state = $state;
     this.users = users;
     this.credentials = {
@@ -10,7 +12,7 @@ export default class loginFormController {
   }
 
   $onInit() {
-    if (this.users.currentUser.loggedIn) {
+    if (this.session.currentUser.loggedIn) {
       alert('you are already logged in');
     }
   }

@@ -1,10 +1,9 @@
 export default class users {
-  constructor($http) {
+  constructor($http, session) {
     'ngInject';
     this.$http = $http;
-    this.error = '';
-    this.list = [];
-    this.currentUser = {};
+    this.session = session;
+    this.all = [];
     this.roles = ['author', 'editor'];
   }
 
@@ -18,32 +17,17 @@ export default class users {
 
   register(user) {
     return this.$http.post(`${env.API_URL}/users/register`, user)
-      .then(res => {
-        this.currentUser.id = res.data.id;
-        this.currentUser.name = res.data.name;
-        this.currentUser.role = res.data.role;
-        this.currentUser.loggedIn = true;
-      });
+      .then(res => this.session.setUser(res.data));
   }
 
   login(user) {
     return this.$http.post(`${env.API_URL}/users/login`, user)
-      .then(res => {
-        this.currentUser.id = res.data.id;
-        this.currentUser.name = res.data.name;
-        this.currentUser.role = res.data.role;
-        this.currentUser.loggedIn = true;
-      });
+      .then(res => this.session.setUser(res.data));
   }
 
   logout() {
     return this.$http.post(`${env.API_URL}/users/logout`)
-      .then(() => {
-        this.currentUser.id = null;
-        this.currentUser.name = null;
-        this.currentUser.role = null;
-        this.currentUser.loggedIn = false;
-      });
+      .then(() => this.session.unsetUser());
   }
 
   update(user) {

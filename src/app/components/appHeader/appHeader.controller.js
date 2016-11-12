@@ -1,7 +1,9 @@
 export default class appHeaderController {
-  constructor($scope, users) {
+  constructor($scope, users, session) {
     'ngInject';
-    this.$scope = $scope
+
+    this.$scope = $scope;
+    this.session = session;
     this.users = users;
   }
 
