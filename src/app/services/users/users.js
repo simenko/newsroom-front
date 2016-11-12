@@ -11,11 +11,11 @@ export default class users {
   }
 
   list() {
-    return this.$http.get(`${env.API_URL}/users`).then(response => response.data);
+    return this.$http.get(`${env.API_URL}/users`).then(res => res.data);
   }
 
-  read(id) {
-    return this.$http.get(`${env.API_URL}/users/${id}`).then(response => response.data);
+  read(_id) {
+    return this.$http.get(`${env.API_URL}/users/${_id}`).then(res => res.data);
   }
 
   register(user) {
@@ -29,12 +29,12 @@ export default class users {
   }
 
   logout() {
-    return this.$http.post(`${env.API_URL}/users/logout`)
-      .then(() => this.session.unsetUser());
+    this.session.unsetUser()
+    return this.$http.post(`${env.API_URL}/users/logout`);
   }
 
   update(user) {
-    return this.$http.put(`${env.API_URL}/users/${user.id}`, user).then(response => response.data);
+    return this.$http.put(`${env.API_URL}/users/${user._id}`, user).then(res => res.data);
   }
 
   delete() {

@@ -1,20 +1,30 @@
+/* global localStorage */
+
 export default class session {
   constructor() {
     'ngInject';
 
-    this.currentUser = {};
-    this.currentStory = {};
+    if (localStorage.currentUser) {
+      this.currentUser = JSON.parse(localStorage.currentUser);
+    } else {
+      this.currentUser = {};
+    }
+    if (localStorage.currentStory) {
+      this.currentStory = JSON.parse(localStorage.currentStory);
+    } else {
+      this.currentStory = {};
+    }
   }
 
   setUser(user) {
-    this.currentUser.id = user.id;
-    this.currentUser.name = user.name;
-    this.currentUser.role = user.role;
+    this.currentUser = user;
     this.currentUser.loggedIn = true;
+    localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
   }
 
   unsetUser() {
     this.currentUser = {};
+    localStorage.clear();
   }
 
   setStory(story) {
