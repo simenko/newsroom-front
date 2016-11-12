@@ -21,6 +21,10 @@ export default ng.module('app.routes', [])
       url: '/story',
       component: 'story',
     }, {
+      name: 'story',
+      url: '/story/:_id',
+      component: 'story',
+    }, {
       name: 'register',
       url: '/register',
       component: 'registerForm',

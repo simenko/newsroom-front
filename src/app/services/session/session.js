@@ -17,12 +17,14 @@ export default class session {
     this.currentUser = {};
   }
 
-  setStroy(story) {
-
+  setStory(story) {
+    this.currentStory = story;
+    localStorage.setItem('currentStory', JSON.stringify(this.currentStory));
   }
 
   unsetStory() {
     this.currentStory = {};
+    localStorage.removeItem('currentStory');
   }
 
 }

@@ -41,14 +41,13 @@
     </nav>
 
   </div>
-  <table st-table="$ctrl.displayedCollection" st-safe-src="$ctrl.stories.list" class="table table-hover ">
+  <table st-table="$ctrl.displayedCollection" st-safe-src="$ctrl.stories.all" class="table table-hover ">
     <thead>
     <tr>
       <th>Title</th>
       <th>Author</th>
       <th>Stage</th>
-      <th st-sort="timeLeft">Time left</th>
-      <th st-sort="size">Size</th>
+      <th st-sort="created_at">Created</th>
       <th></th>
     </tr>
     <tr>
@@ -59,11 +58,10 @@
     </thead>
     <tbody>
     <tr ng-repeat="row in $ctrl.displayedCollection">
-      <td><a href="#">{{::row.title}}</a></td>
-      <td>{{::row.author}}</td>
+      <td><a ui-sref="story({ _id: row._id })">{{::row.title}}</a></td>
+      <td>{{::row.created_by}}</td>
       <td>{{::row.stage}}</td>
-      <td>{{::row.timeLeft}}</td>
-      <td>{{::row.size}}</td>
+      <td>{{::row.created_at}}</td>
       <td><span class="glyphicon glyphicon-remove-sign story-grid--remove-btn"></span></td>
     </tr>
     </tbody>

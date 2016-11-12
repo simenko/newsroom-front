@@ -1,30 +1,42 @@
 /* global env */
 
 export default class stories {
-  constructor($http) {
+  constructor($http, session) {
     'ngInject';
 
     this.$http = $http;
+    this.session = session;
     this.all = [];
+    this.stages = ['idea', 'draft', 'ready to review', 'ready to publish', 'published', 'archived']
   }
 
   list() {
-    return this.$http.get(`${env.API_URL}/stories`).then(response => response.data);
+    return this.$http.get(`${env.API_URL}/stories`).then((res) => {
+      this.all = res.data;
+    });
   }
 
-  read(id) {
-    return this.$http.get(`${env.API_URL}/stories/${id}`).then(response => response.data);
+  read(_id) {
+    return this.$http.get(`${env.API_URL}/stories/${_id}`).then(res => this.session.setStory(res.data));
   }
 
   create(story) {
-    return this.$http.post(`${env.API_URL}/stories/`, story).then(response => response.data);
+    story.created_by = this.session.currentUser._id;
+    return this.$http.post(`${env.API_URL}/stories/`, story)
+      .then((res) => {
+        this.session.setStory(res.data);
+      });
   }
 
   update(story) {
-    return this.$http.put(`${env.API_URL}/stories/${story.id}`, story).then(response => response.data);
+    return this.$http.put(`${env.API_URL}/stories/${story._id}`, story)
+      .then((res) => {
+        this.session.setStory(res.data);
+      });
   }
 
-  remove(id) {
-    return this.$http.delete(`${env.API_URL}/stories${id}`);
+  remove(_id) {
+    return this.$http.delete(`${env.API_URL}/stories${_id}`)
+      .then(this.session.unsetStory());
   }
 }
