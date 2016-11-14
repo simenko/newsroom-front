@@ -6,7 +6,6 @@ import './infoPage';
 import './loginForm';
 import './registerForm';
 import './story';
-import './storyEditor';
 import './storyGrid';
 import './storyContent';
 
@@ -18,6 +17,5 @@ export default ng.module('app.components', [
   'app.components.registerForm',
   'app.components.story',
   'app.components.storyContent',
-  'app.components.storyEditor',
   'app.components.storyGrid',
 ]).name;

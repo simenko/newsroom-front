@@ -1,6 +1,11 @@
 <form class="form" ng-if="$ctrl.editMode">
   <div class="form-group col-xs-12">
-    <label for="title" class="control-label">Story title</label>
+    <text-angular ng-model="$ctrl.storyBuffer.content"
+                  ta-toolbar="[['h1','h2','h3','h4','pre','quote'],['bold','italics','ul', 'ol','redo','undo','clear'],['html','insertImage','insertLink','insertVideo','charcount']]"></text-angular>
+  </div>
+
+  <div class="form-group col-xs-12">
+    <label for="title" class="control-label">Working title</label>
     <input type="text" class="form-control" id="title" required
            ng-model="$ctrl.storyBuffer.title">
   </div>
