@@ -34,19 +34,26 @@
   <!--
  TODO: deadline
  -->
-  <div class="form-group col-xs-12">
-    <story-editor></story-editor>
-  </div>
-  <div class="form-group col-xs-12">
-    <button type="submit" class="btn btn-default"
-            ng-click="$ctrl.saveStory()">Save
-    </button>
-  </div>
+
 </form>
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <story-content ng-if="$ctrl.viewMode" ng-bind="$ctrl.storyBuffer.content"></story-content>
+      <story-content ng-hide="$ctrl.editMode" ng-bind-html="$ctrl.storyBuffer.content"></story-content>
     </div>
   </div>
 </div>
+<form class="form">
+  <div class="form-group col-xs-12">
+    <button type="submit" class="btn btn-default"
+            ng-show="$ctrl.editMode"
+            ng-click="$ctrl.save()">
+      Save
+    </button>
+    <button type="submit" class="btn btn-default"
+            ng-hide="$ctrl.editMode"
+            ng-click="$ctrl.edit()">
+      Edit
+    </button>
+  </div>
+</form>
