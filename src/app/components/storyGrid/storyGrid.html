@@ -1,69 +1,38 @@
-<div class="panel panel-default">
-  <div class="panel-heading story-grid--panel-heading">
-    <nav class="navbar story-grid--toolbar">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <span class="navbar-brand">Stories</span>
-        </div>
-        <div class="navbar-collapse collapse" uib-collapse="isNavCollapsed">
-          <form class="navbar-form navbar-left">
-            <div class="form-group">
-              <input type="text" class="form-control col-sm-8" placeholder="Search">
-            </div>
-            <button class="btn btn-success" ui-sref="createStory">New story</button>
-          </form>
-          <ul class="nav navbar-nav navbar-right">
-            <li uib-dropdown is-open="status.isAuthorOpen">
-              <a id="author" uib-dropdown-toggle ng-disabled="disabled">
-                Author <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="author">
-                <li role="menuitem" ng-repeat="assignee in $ctrl.assignees"><a href="#">{{::assignee}}</a></li>
-              </ul>
-            </li>
-
-            <li uib-dropdown is-open="status.isStageOpen">
-              <a id="stage" uib-dropdown-toggle ng-disabled="disabled">
-                Stage <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="stage">
-                <li role="menuitem" ng-repeat="stage in $ctrl.stages"><a href="#">{{::stage}}</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-  </div>
-  <table st-table="$ctrl.displayedCollection" st-safe-src="$ctrl.stories.all" class="table table-hover ">
-    <thead>
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Stage</th>
-      <th st-sort="created_at">Created</th>
-      <th></th>
-    </tr>
-    <tr>
-      <th colspan="1"><input st-search="title" class="form-control" placeholder="title" type="text"></th>
-      <th colspan="1"><input st-search="author" class="form-control" placeholder="author" type="text"></th>
-      <th colspan="1"><input st-search="stage" class="form-control" placeholder="stage" type="text"></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="row in $ctrl.displayedCollection">
-      <td><a ui-sref="story({ _id: row._id })">{{::row.title}}</a></td>
-      <td>{{::row.created_by}}</td>
-      <td>{{::row.stage}}</td>
-      <td>{{::row.created_at}}</td>
-      <td><span class="glyphicon glyphicon-remove-sign story-grid--remove-btn"></span></td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+<table st-table="$ctrl.displayedCollection" st-safe-src="$ctrl.stories.all" class="table table-hover ">
+  <thead>
+  <tr>
+    <th colspan="1">
+      <input st-search="title" class="form-control" placeholder="Search by title" type="text">
+    </th>
+    <th colspan="1">
+      <select st-search="created_by.name" st-input-event="change" class="form-control"
+              placeholder="author">
+        <option value="" disabled selected>Select author</option>
+        <option ng-repeat="user in $ctrl.users.all">{{user.name}}</option>
+      </select>
+    </th>
+    <th colspan="1">
+      <select st-search="stage" st-input-event="change" class="form-control"
+              placeholder="stage">
+        <option value="" disabled selected>Select stage</option>
+        <option ng-repeat="stage in $ctrl.stories.stages">{{stage}}</option>
+      </select>
+    </th>
+    <th st-sort="created_at">Sort by age</th>
+    <th st-sort="deadline_at">Sort by deadline</th>
+    <th>
+      <button class="btn btn-success" ui-sref="createStory">New story</button>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="row in $ctrl.displayedCollection">
+    <td><a ui-sref="story({ _id: row._id })">{{::row.title}}</a></td>
+    <td>{{::row.created_by.name}}</td>
+    <td>{{::row.stage}}</td>
+    <td am-time-ago="row.created_at"></td>
+    <td am-time-ago="row.deadline_at"></td>
+    <td><span class="glyphicon glyphicon-remove-sign story-grid--remove-btn"></span></td>
+  </tr>
+  </tbody>
+</table>

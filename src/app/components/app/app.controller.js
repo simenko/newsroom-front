@@ -10,7 +10,8 @@ export default class {
   }
 
   $onInit() {
-    this.users.read(this.session.currentUser._id);
+    this.users.read(this.session.currentUser._id)
+      .then(this.users.list());
     this.stories.list();
-  }
+  }             1
 }

@@ -28,7 +28,7 @@ export default ng.module('app', [
   'ui.bootstrap',
   'textAngular',
   'smart-table',
-  // 'angular.moment',
+  'angularMoment',
   'ui.router',
   'ui.router.state.events',
   'app.components',
