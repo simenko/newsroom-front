@@ -11,11 +11,19 @@ export default class users {
   }
 
   list() {
-    return this.$http.get(`${env.API_URL}/users`).then(res => res.data);
+    return this.$http.get(`${env.API_URL}/users`).then((res) => {
+      this.all = res.data;
+    });
   }
 
   read(_id) {
-    return this.$http.get(`${env.API_URL}/users/${_id}`).then(res => res.data);
+    return this.$http.get(`${env.API_URL}/users/${_id}`)
+      .then(res => {
+        this.session.setUser(res.data);
+      })
+      .catch(() => {
+        this.session.unsetUser();
+      });
   }
 
   register(user) {

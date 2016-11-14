@@ -12,6 +12,7 @@ export default ng.module('app.routes', [])
       name: 'newsroom',
       url: '/newsroom',
       component: 'storyGrid',
+      authenticate: true,
     }, {
       name: 'info',
       url: '/info/:page',
@@ -20,6 +21,7 @@ export default ng.module('app.routes', [])
       name: 'createStory',
       url: '/story',
       component: 'story',
+      authenticate: true,
     }, {
       name: 'story',
       url: '/story/:_id',
@@ -36,6 +38,7 @@ export default ng.module('app.routes', [])
       name: 'logout',
       url: '/',
       component: 'story',
+      authenticate: true,
     },
     ];
     states.forEach(state => $stateProvider.state(state));

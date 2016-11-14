@@ -14,6 +14,12 @@ import 'angular-smart-table';
 import 'angular-moment';
 import 'angular-ui-router/release/angular-ui-router';
 
+/**
+ * FIXME: Since version 1.0.0 ui-router does not use state change events. I use legacy method
+ * to authenticate routes, because it is well documented and it just works.
+*/
+import 'angular-ui-router/commonjs/ng1/legacy/stateEvents';
+
 import './components';
 import './services';
 import './routes';
@@ -24,6 +30,7 @@ export default ng.module('app', [
   'smart-table',
   // 'angular.moment',
   'ui.router',
+  'ui.router.state.events',
   'app.components',
   'app.services',
   'app.routes',
@@ -31,4 +38,14 @@ export default ng.module('app', [
   'ngInject';
 
   $httpProvider.defaults.withCredentials = true;
-}]).name;
+}])
+.run(($rootScope, session, $state) => {
+  'ngInject';
+
+  $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams) => {
+    if (toState.authenticate && !session.currentUser.loggedIn) {
+      $state.transitionTo('login');
+      event.preventDefault();
+    }
+  });
+}).name;
