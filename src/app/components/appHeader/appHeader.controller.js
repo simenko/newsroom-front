@@ -5,6 +5,7 @@ export default class appHeaderController {
     this.$scope = $scope;
     this.session = session;
     this.users = users;
+    this.isNavCollapsed = true;
   }
 
   logout() {
