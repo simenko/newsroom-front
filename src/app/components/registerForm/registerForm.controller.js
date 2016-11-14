@@ -11,11 +11,16 @@ export default class registerFormController {
       password: '',
       role: 'author',
     };
+    this.error = null;
   }
 
   $onInit() {
+    this.checkIfLoggedIn();
+  }
+
+  checkIfLoggedIn() {
     if (this.session.currentUser.loggedIn) {
-      alert('you are already logged in');
+      this.error = 'You are already logged in. Log out to register another account.';
     }
   }
 

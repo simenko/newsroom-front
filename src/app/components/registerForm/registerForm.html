@@ -1,52 +1,72 @@
 <div class="row">
-  <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title text-center">Register</h3>
-      </div>
-      <div class="panel-body">
-
-        <form class="form-horizontal" name="registerForm" ng-submit="$ctrl.register(registerForm.$valid)" novalidate>
-          <div class="form-group">
-            <label for="screenName" class="col-sm-2 control-label">Name</label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" id="screenName" placeholder="Screen Name" required
-                     ng-model="$ctrl.credentials.name">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-            <div class="col-sm-9">
-              <input type="email" class="form-control" id="inputEmail" placeholder="Email" required
-                     ng-model="$ctrl.credentials.email">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputPassword" class="col-sm-2 control-label">Password</label>
-            <div class="col-sm-9">
-              <input type="password" class="form-control" id="inputPassword" placeholder="Password" required
-                     ng-model="$ctrl.credentials.password">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="inputRole" class="col-sm-2 control-label">Role</label>
-            <div class="col-sm-9">
-              <select class="form-control" id="inputRole"
-                      ng-model="$ctrl.credentials.role">
-                <option ng-repeat="role in $ctrl.users.roles" value="{{role}}">{{role}}</option>
-              </select>
-              </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-default"
-                      ng-disabled="registerForm.$invalid">
-                Register</button>
-            </div>
-          </div>
-        </form>
-
-      </div>
+  <div class="panel panel-danger text-center"
+       ng-show="$ctrl.error">
+    <div class="panel-body" ng-bind="$ctrl.error">
     </div>
   </div>
+</div>
+<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3"
+     ng-if="!$ctrl.session.currentUser.loggedIn">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title text-center">Register</h3>
+    </div>
+    <div class="panel-body">
+
+      <form class="form-horizontal" name="registerForm" ng-submit="$ctrl.register(registerForm.$valid)" novalidate>
+        <div class="form-group">
+          <label for="screenName" class="col-sm-2 control-label">Name</label>
+          <div class="col-sm-9">
+            <input type="text" name="name" class="form-control form--input" id="screenName"
+                   placeholder="Screen Name" required
+                   ng-model="$ctrl.credentials.name"
+                   ng-minlength="1">
+          </div>
+          <p ng-show="registerForm.name.$invalid && registerForm.name.$touched"
+             class="col-xs-10 col-xs-offset-2 help-block">You name is required.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+          <div class="col-sm-9">
+            <input type="email" name="email" class="form-control form--input" id="inputEmail"
+                   placeholder="Email" required
+                   ng-model="$ctrl.credentials.email">
+          </div>
+          <p ng-show="registerForm.email.$invalid && registerForm.email.$touched"
+             class="col-xs-10 col-xs-offset-2 help-block">Email is invalid</p>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+          <div class="col-sm-9">
+            <input type="password" name="password" class="form-control form--input" id="inputPassword"
+                   placeholder="Password" required
+                   ng-model="$ctrl.credentials.password"
+                   ng-minlength="8">
+          </div>
+          <p ng-show="registerForm.password.$invalid && registerForm.password.$touched"
+             class="col-xs-10 col-xs-offset-2 help-block">Passport must be 8 symbols or longer.</p>
+        </div>
+        <div class="form-group">
+          <label for="inputRole" class="col-sm-2 control-label">Role</label>
+          <div class="col-sm-9">
+            <select class="form-control" id="inputRole"
+                    ng-model="$ctrl.credentials.role">
+              <option ng-repeat="role in $ctrl.users.roles">{{role}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default"
+                    ng-disabled="registerForm.$invalid">
+              Register
+            </button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
 </div>

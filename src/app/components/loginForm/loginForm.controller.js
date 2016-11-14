@@ -1,7 +1,8 @@
 export default class loginFormController {
-  constructor($state, users, session) {
+  constructor($rootScope, $state, users, session) {
     'ngInject';
 
+    $rootScope.$on('logout', () => this.error = null);
     this.session = session;
     this.$state = $state;
     this.users = users;
@@ -9,17 +10,18 @@ export default class loginFormController {
       email: '',
       password: '',
     };
+    this.error = null;
   }
 
   $onInit() {
     if (this.session.currentUser.loggedIn) {
-      alert('you are already logged in');
+      this.error = 'You are already logged in.';
     }
   }
 
   login() {
     this.users.login(this.credentials)
       .then(() => this.$state.go('home'))
-      .catch((err) => alert(JSON.stringify(err.data)));
+      .catch(() => this.error = 'Login incorrect. Please, try again.');
   }
 }

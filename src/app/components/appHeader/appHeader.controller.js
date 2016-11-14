@@ -1,14 +1,15 @@
 export default class appHeaderController {
-  constructor($scope, users, session) {
+  constructor($rootScope, users, session) {
     'ngInject';
 
-    this.$scope = $scope;
+    this.$rootScope = $rootScope;
     this.session = session;
     this.users = users;
     this.isNavCollapsed = true;
   }
 
   logout() {
+    this.$rootScope.$emit('logout');
     this.users.logout();
   }
 

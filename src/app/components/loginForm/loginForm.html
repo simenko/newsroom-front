@@ -1,5 +1,11 @@
 <div class="row">
-  <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
+  <div class="panel panel-danger text-center"
+       ng-show="$ctrl.error">
+    <div class="panel-body" ng-bind="$ctrl.error">
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3"
+       ng-if="!$ctrl.session.currentUser.loggedIn">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title text-center">Login</h3>
@@ -10,16 +16,21 @@
           <div class="form-group">
             <label for="inputEmail" class="col-sm-2 control-label">Email</label>
             <div class="col-sm-9">
-              <input type="email" class="form-control" id="inputEmail" placeholder="Email" required
+              <input type="email" name="email" class="form-control form--input" id="inputEmail" placeholder="Email" required
                      ng-model="$ctrl.credentials.email">
             </div>
+            <p ng-show="loginForm.email.$invalid && loginForm.email.$touched"
+               class="col-xs-10 col-xs-offset-2 help-block">Email is invalid.</p>
           </div>
           <div class="form-group">
             <label for="inputPassword" class="col-sm-2 control-label">Password</label>
             <div class="col-sm-9">
-              <input type="password" class="form-control" id="inputPassword" placeholder="Password" required
-                     ng-model="$ctrl.credentials.password">
+              <input type="password" name="password" class="form-control form--input" id="inputPassword" placeholder="Password" required
+                     ng-model="$ctrl.credentials.password"
+                     ng-minlength="8">
             </div>
+            <p ng-show="loginForm.password.$invalid && loginForm.password.$touched"
+               class="col-xs-10 col-xs-offset-2 help-block">Passport must 8 symbols or longer.</p>
           </div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
