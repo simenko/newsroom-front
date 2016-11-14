@@ -3,11 +3,12 @@ import ng from 'angular';
 export default ng.module('app.routes', [])
   .config(($locationProvider, $stateProvider) => {
     'ngInject';
+
     $locationProvider.html5Mode(true);
     const states = [{
       name: 'home',
       url: '/',
-      component: 'story', // TODO: main page
+      component: 'infoPage', // TODO: main page
     }, {
       name: 'newsroom',
       url: '/newsroom',

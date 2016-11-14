@@ -7,7 +7,7 @@ export default class stories {
     this.$http = $http;
     this.session = session;
     this.all = [];
-    this.stages = ['idea', 'draft', 'ready to review', 'ready to publish', 'published', 'archived']
+    this.stages = ['idea', 'draft', 'ready to review', 'ready to publish', 'published', 'archived'];
   }
 
   list() {
