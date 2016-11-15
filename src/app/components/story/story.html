@@ -23,7 +23,7 @@
     <label for="assignee" class="control-label">Assignee</label>
     <select class="form-control" id="assignee"
             ng-model="$ctrl.storyBuffer.assignee">
-      <option ng-repeat="user in $ctrl.users.all">{{user.name}}</option>
+      <option ng-repeat="user in $ctrl.users.all" value="{{user._id}}">{{user.name}}</option>
     </select>
   </div>
   <div class="form-group col-xs-6">
