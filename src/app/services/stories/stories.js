@@ -36,7 +36,7 @@ export default class stories {
   }
 
   remove(_id) {
-    return this.$http.delete(`${env.API_URL}/stories${_id}`)
+    return this.$http.delete(`${env.API_URL}/stories/${_id}`)
       .then(this.session.unsetStory());
   }
 }

@@ -18,7 +18,7 @@ export default class {
     this.stories.list();
   }
 
-  createStory() {
-    this.$state.go();
+  remove(_id) {
+    this.stories.remove(_id);
   }
 }
