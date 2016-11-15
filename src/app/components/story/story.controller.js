@@ -8,7 +8,7 @@ export default class {
     this.session = session;
     this.editMode = false;
     this.storyBuffer = {};
-    this.storyBuffer.assignee = this.session.currentUser._id;
+    this.error = null;
   }
 
   $onInit() {
