@@ -6,7 +6,6 @@ export default class {
     this.users = users;
     this.stories = stories;
     this.isNavCollapsed = true;
-    this.selectedAuthor = '';
     this.displayedCollection = [].concat(this.stories.all);
   }
 
