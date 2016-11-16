@@ -8,7 +8,7 @@ export default ng.module('app.routes', [])
     const states = [{
       name: 'home',
       url: '/',
-      component: 'infoPage', // TODO: main page
+      component: 'mainFeed',
     }, {
       name: 'newsroom',
       url: '/newsroom',

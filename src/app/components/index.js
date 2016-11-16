@@ -8,6 +8,7 @@ import './registerForm';
 import './story';
 import './storyGrid';
 import './storyContent';
+import './mainFeed';
 
 export default ng.module('app.components', [
   'app.components.app',
@@ -18,4 +19,5 @@ export default ng.module('app.components', [
   'app.components.story',
   'app.components.storyContent',
   'app.components.storyGrid',
+  'app.components.mainFeed',
 ]).name;
