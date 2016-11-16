@@ -6,8 +6,7 @@ export default {
   template,
   controller,
   bindings: {
-    author: '<',
-    published_at: '<',
-    body: '<'
+    story: '<',
+    preview: '<',
   }
 };

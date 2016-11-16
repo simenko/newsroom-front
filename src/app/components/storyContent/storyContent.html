@@ -1,2 +1,16 @@
-<span class="story-content--author-date">{{::$ctrl.author}} published at {{::$ctrl.published_at}}</span>
-<div class="story-content--body" ng-bind="$ctrl.body"></div>
+<div class="row">
+  <div class="panel panel-danger text-center"
+       ng-show="$ctrl.error">
+    <div class="panel-body" ng-bind="$ctrl.error">
+    </div>
+  </div>
+</div>
+
+<div class="story-content--" ng-if="!$ctrl.error">
+  <span class="story-content--author-date"
+        ng-hide="$ctrl.preview">
+    {{$ctrl.story.assignee.name || $ctrl.session.currentUser.name}} published {{$ctrl.moment($ctrl.story.published_at || Date.now()).fromNow()}}
+  </span>
+  <h2 class="story-content--title" ng-bind="$ctrl.story.title"></h2>
+  <div class="story-content--body" ng-bind-html="$ctrl.story.content"></div>
+</div>

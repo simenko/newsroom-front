@@ -26,7 +26,13 @@ export default ng.module('app.routes', [])
     }, {
       name: 'story',
       url: '/story/:_id',
-      component: 'story',
+      component: 'storyContent',
+      resolve: {
+        story: ($stateParams, stories) => {
+          'ngInject';
+          return stories.read($stateParams._id);
+        }
+      }
     }, {
       name: 'register',
       url: '/register',
