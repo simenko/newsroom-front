@@ -1,12 +1,14 @@
 export default class {
-  constructor($stateParams, moment, stories, session, users) {
+  constructor($scope, $stateParams, moment, stories, session, users, realtime) {
     'ngInject';
 
+    this.$scope = $scope;
     this.$stateParams = $stateParams;
     this.moment = moment;
     this.users = users;
     this.stories = stories;
     this.session = session;
+    this.realtime = realtime;
     this.preview = false;
     this.storyBuffer = {};
     this.error = null;
@@ -29,17 +31,20 @@ export default class {
       this.session.currentStory = {}
       this.session.currentStory.isNew = true;
     }
+    this.stories.readDetails(this.$stateParams._id)
+      .then(() => this.storyBuffer = this.session.currentStory);
+    this.realtime.startEditing(this.updateBuffer.bind(this));
+    this.$scope.$watch('$ctrl.storyBuffer', this.realtime.setWatcher(), true);
   }
 
-  save() {
-    if (this.session.currentStory.isNew) {
-      this.stories.create(this.storyBuffer)
-        .then(() => delete this.session.currentStory.isNew)
-        .catch((err) => this.error = JSON.stringify(err));
-    } else {
-      this.stories.update(this.storyBuffer)
-        .catch((err) => this.error = JSON.stringify(err));
-    }
+  updateBuffer(diff) {
+    Object.assign(this.storyBuffer, diff);
+    this.$scope.$digest();
+  }
+
+  saveStory() {
+    this.stories.update(this.storyBuffer)
+      .catch((err) => this.error = JSON.stringify(err));
   }
 
   setDeadline() {
