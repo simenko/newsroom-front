@@ -30,6 +30,10 @@
           <a class="nav-link" ui-sref="login">Log in </a>
         </li>
         <li class="nav-item"
+            ng-show="$ctrl.session.currentUser.loggedIn">
+          <a class="nav-link">{{$ctrl.session.currentUser.name}}</a>
+        </li>
+        <li class="nav-item"
             ng-show="$ctrl.session.currentUser.loggedIn"
             ng-click="$ctrl.logout()">
           <a class="nav-link">Log out</a>
