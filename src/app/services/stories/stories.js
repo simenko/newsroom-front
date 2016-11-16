@@ -16,8 +16,24 @@ export default class stories {
     });
   }
 
+  listMetadata() {
+    return this.$http.get(`${env.API_URL}/stories/metadata`).then((res) => {
+      this.all = res.data;
+    });
+  }
+
   read(_id) {
-    return this.$http.get(`${env.API_URL}/stories/${_id}`).then(res => this.session.setStory(res.data));
+    return this.$http.get(`${env.API_URL}/stories/${_id}`).then(res => {
+      this.session.setStory(res.data);
+      return res.data;
+    });
+  }
+
+  readDetails(_id) {
+    return this.$http.get(`${env.API_URL}/stories/details/${_id}`).then(res => {
+      this.session.setStory(res.data);
+      return res.data;
+    });
   }
 
   create(story) {
