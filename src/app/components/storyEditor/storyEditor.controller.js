@@ -16,20 +16,10 @@ export default class {
   }
 
   $onInit() {
-    // this.users.list()
-    //   .then(() => {
-        if (this.session.currentUser.role === 'editor') {
-          this.possibleAssignees = this.users.all;
-        } else {
-          this.possibleAssignees = [this.session.currentUser];
-        }
-      // })
-    if (this.$stateParams._id) {
-      this.stories.readDetails(this.$stateParams._id)
-        .then(() => this.storyBuffer = this.session.currentStory);
+    if (this.session.currentUser.role === 'editor') {
+      this.possibleAssignees = this.users.all;
     } else {
-      this.session.currentStory = {}
-      this.session.currentStory.isNew = true;
+      this.possibleAssignees = [this.session.currentUser];
     }
     this.stories.readDetails(this.$stateParams._id)
       .then(() => this.storyBuffer = this.session.currentStory);
@@ -48,7 +38,9 @@ export default class {
   }
 
   setDeadline() {
-    this.storyBuffer.deadline_at = this.moment().add(this.hoursToDeadline, 'hours').toDate();
+    this.storyBuffer.deadline_at = this.moment()
+      .add(this.hoursToDeadline, 'hours')
+      .toDate();
   }
 
 }

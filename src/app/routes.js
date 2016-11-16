@@ -30,6 +30,7 @@ export default ng.module('app.routes', [])
       resolve: {
         story: ($stateParams, stories) => {
           'ngInject';
+
           return stories.read($stateParams._id);
         }
       }

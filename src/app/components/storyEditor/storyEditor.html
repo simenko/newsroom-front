@@ -3,7 +3,6 @@
   <div class="panel-body" ng-bind="$ctrl.error">
   </div>
 </div>
-
 <form class="form">
   <div class="form-group">
     <label for="title" class="control-label">Title</label>
@@ -14,7 +13,6 @@
     <text-angular ng-model="$ctrl.storyBuffer.content"
                   ta-toolbar="[['h1','h2','h3','h4','pre','quote'],['bold','italics','ul', 'ol','redo','undo','clear'],['html','insertImage','insertLink','insertVideo','charcount']]"></text-angular>
   </div>
-
   <div class="form-group">
     <label for="assignee" class="control-label">Assignee</label>
     <select class="form-control" id="assignee"
@@ -29,9 +27,6 @@
       <option ng-repeat="stage in $ctrl.stories.stages">{{stage}}</option>
     </select>
   </div>
-  <!--
-  TODO: assets
-  -->
 </form>
 <form class="form-inline">
   <div class="form-group">
@@ -53,11 +48,10 @@
     <story-content ng-if="$ctrl.preview" story="$ctrl.storyBuffer"></story-content>
   </div>
 </div>
-<hr/>
 <form class="form-inline">
   <div class="form-group">
     <button type="submit" class="btn btn-success"
-            ng-click="$ctrl.save()">
+            ng-click="$ctrl.saveStory()">
       Save
     </button>
   </div>
