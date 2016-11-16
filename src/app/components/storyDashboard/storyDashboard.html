@@ -21,13 +21,13 @@
     <th st-sort="created_at" st-sort-default="reverse">Sort by age</th>
     <th st-sort="deadline_at" st-sort-default="reverse">Sort by deadline</th>
     <th>
-      <button class="btn btn-success" ui-sref="createStory">New story</button>
+      <button class="btn btn-success" ui-sref="editStory({ _id: null})">New story</button>
     </th>
   </tr>
   </thead>
   <tbody>
   <tr ng-repeat="row in $ctrl.displayedCollection">
-    <td><a ui-sref="story({ _id: row._id })">{{::row.title}}</a></td>
+    <td><a ui-sref="editStory({ _id: row._id })">{{::row.title}}</a></td>
     <td>{{::row.assignee.name}}</td>
     <td>{{::row.stage}}</td>
     <td am-time-ago="row.created_at"></td>

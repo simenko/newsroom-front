@@ -1,0 +1,71 @@
+<div class="panel panel-danger text-center"
+     ng-show="$ctrl.error">
+  <div class="panel-body" ng-bind="$ctrl.error">
+  </div>
+</div>
+
+<form class="form">
+  <div class="form-group">
+    <label for="title" class="control-label">Title</label>
+    <input type="text" class="form-control" id="title" required
+           ng-model="$ctrl.storyBuffer.title">
+  </div>
+  <div class="form-group">
+    <text-angular ng-model="$ctrl.storyBuffer.content"
+                  ta-toolbar="[['h1','h2','h3','h4','pre','quote'],['bold','italics','ul', 'ol','redo','undo','clear'],['html','insertImage','insertLink','insertVideo','charcount']]"></text-angular>
+  </div>
+
+  <div class="form-group">
+    <label for="assignee" class="control-label">Assignee</label>
+    <select class="form-control" id="assignee"
+            ng-model="$ctrl.storyBuffer.assignee">
+      <option ng-repeat="assignee in $ctrl.possibleAssignees" value="{{assignee._id}}">{{assignee.name}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="stage" class="control-label">Stage</label>
+    <select class="form-control" id="stage"
+            ng-model="$ctrl.storyBuffer.stage">
+      <option ng-repeat="stage in $ctrl.stories.stages">{{stage}}</option>
+    </select>
+  </div>
+  <!--
+  TODO: assets
+  -->
+</form>
+<form class="form-inline">
+  <div class="form-group">
+    <label for="hours">Set deadline to </label>
+    <input type="number" min="1" class="form-control hours-to-deadline-input" id="hours"
+           ng-model="$ctrl.hoursToDeadline"
+           ng-change="$ctrl.setDeadline()">
+  </div>
+  <div class="form-group">
+    <label>hours from now</label>
+  </div>
+</form>
+<p class="preview-header"
+   ng-show="$ctrl.preview">
+  Preview:
+</p>
+<div class="row">
+  <div class="col-xs-12">
+    <story-content ng-if="$ctrl.preview" story="$ctrl.storyBuffer"></story-content>
+  </div>
+</div>
+<hr/>
+<form class="form-inline">
+  <div class="form-group">
+    <button type="submit" class="btn btn-success"
+            ng-click="$ctrl.save()">
+      Save
+    </button>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-default"
+            ng-click="$ctrl.preview = !$ctrl.preview">
+      Toggle preview
+    </button>
+  </div>
+</form>
+

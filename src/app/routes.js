@@ -12,16 +12,16 @@ export default ng.module('app.routes', [])
     }, {
       name: 'newsroom',
       url: '/newsroom',
-      component: 'storyGrid',
+      component: 'storyDashboard',
       authenticate: true,
     }, {
       name: 'info',
       url: '/info/:page',
       component: 'infoPage',
     }, {
-      name: 'createStory',
-      url: '/story',
-      component: 'story',
+      name: 'editStory',
+      url: '/edit/story/:_id',
+      component: 'storyEditor',
       authenticate: true,
     }, {
       name: 'story',

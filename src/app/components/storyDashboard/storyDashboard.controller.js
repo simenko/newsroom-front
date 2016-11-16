@@ -14,7 +14,8 @@ export default class {
   }
 
   init() {
-    this.stories.list();
+    this.users.list();
+    this.stories.listMetadata();
   }
 
   remove(_id) {

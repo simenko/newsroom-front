@@ -5,8 +5,8 @@ import './appHeader';
 import './infoPage';
 import './loginForm';
 import './registerForm';
-import './story';
-import './storyGrid';
+import './storyEditor';
+import './storyDashboard';
 import './storyContent';
 import './mainFeed';
 
@@ -16,8 +16,8 @@ export default ng.module('app.components', [
   'app.components.infoPage',
   'app.components.loginForm',
   'app.components.registerForm',
-  'app.components.story',
+  'app.components.storyEditor',
   'app.components.storyContent',
-  'app.components.storyGrid',
+  'app.components.storyDashboard',
   'app.components.mainFeed',
 ]).name;
