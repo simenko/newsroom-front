@@ -14,7 +14,8 @@
     <div class="panel-body">
 
       <form class="form-horizontal" name="registerForm" ng-submit="$ctrl.register(registerForm.$valid)" novalidate>
-        <div class="form-group">
+        <div class="form-group"
+             ng-class="{ 'has-error': registerForm.name.$invalid && registerForm.name.$touched }">
           <label for="screenName" class="col-sm-2 control-label">Name</label>
           <div class="col-sm-9">
             <input type="text" name="name" class="form-control form--input" id="screenName"
@@ -26,7 +27,8 @@
              class="col-xs-10 col-xs-offset-2 help-block">You name is required.</p>
         </div>
 
-        <div class="form-group">
+        <div class="form-group"
+             ng-class="{ 'has-error': registerForm.email.$invalid && registerForm.email.$touched }">
           <label for="inputEmail" class="col-sm-2 control-label">Email</label>
           <div class="col-sm-9">
             <input type="email" name="email" class="form-control form--input" id="inputEmail"
@@ -36,7 +38,8 @@
           <p ng-show="registerForm.email.$invalid && registerForm.email.$touched"
              class="col-xs-10 col-xs-offset-2 help-block">Email is invalid</p>
         </div>
-        <div class="form-group">
+        <div class="form-group"
+             ng-class="{ 'has-error': registerForm.password.$invalid && registerForm.password.$touched }">
           <label for="inputPassword" class="col-sm-2 control-label">Password</label>
           <div class="col-sm-9">
             <input type="password" name="password" class="form-control form--input" id="inputPassword"

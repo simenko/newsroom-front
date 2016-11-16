@@ -22,6 +22,12 @@ export default class loginFormController {
   login() {
     this.users.login(this.credentials)
       .then(() => this.$state.go('home'))
-      .catch(() => this.error = 'Login incorrect. Please, try again.');
+      .catch((err) => {
+        if (err.status === 401) {
+          this.error = 'Login incorrect. Please, try again.';
+        } else {
+          this.error = 'Oops! Something went wrong... Please, try again.';
+        }
+      });
   }
 }

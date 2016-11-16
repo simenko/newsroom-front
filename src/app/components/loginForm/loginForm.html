@@ -13,7 +13,8 @@
       <div class="panel-body">
 
         <form class="form-horizontal" name="loginForm" ng-submit="$ctrl.login(loginForm.$valid)" novalidate>
-          <div class="form-group">
+          <div class="form-group"
+               ng-class="{ 'has-error': loginForm.email.$invalid && loginForm.email.$touched }">
             <label for="inputEmail" class="col-sm-2 control-label">Email</label>
             <div class="col-sm-9">
               <input type="email" name="email" class="form-control form--input" id="inputEmail" placeholder="Email" required
@@ -22,7 +23,8 @@
             <p ng-show="loginForm.email.$invalid && loginForm.email.$touched"
                class="col-xs-10 col-xs-offset-2 help-block">Email is invalid.</p>
           </div>
-          <div class="form-group">
+          <div class="form-group"
+               ng-class="{ 'has-error': loginForm.password.$invalid && loginForm.password.$touched }">
             <label for="inputPassword" class="col-sm-2 control-label">Password</label>
             <div class="col-sm-9">
               <input type="password" name="password" class="form-control form--input" id="inputPassword" placeholder="Password" required
