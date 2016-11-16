@@ -21,7 +21,7 @@
     <th st-sort="created_at" st-sort-default="reverse">Sort by age</th>
     <th st-sort="deadline_at" st-sort-default="reverse">Sort by deadline</th>
     <th>
-      <button class="btn btn-success" ui-sref="editStory({ _id: null})">New story</button>
+      <button class="btn btn-success" ng-click="$ctrl.createStory()">New story</button>
     </th>
   </tr>
   </thead>

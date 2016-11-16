@@ -37,10 +37,10 @@ export default class stories {
   }
 
   create(story) {
-    story.created_by = this.session.currentUser._id;
     return this.$http.post(`${env.API_URL}/stories/`, story)
       .then((res) => {
-        this.session.setStory(res.data);
+        // this.session.setStory(res.data);
+        return res.data;
       });
   }
 
