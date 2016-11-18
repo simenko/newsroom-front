@@ -1,8 +1,6 @@
-import BaseDoInject from '../../BaseController';
+import InjectToBase from '../../InjectedBase';
 
-export const bindings = {};
-
-export class controller extends BaseDoInject('stories') {
+export class controller extends InjectToBase('stories') {
   constructor(...args) {
     super(...args);
   }

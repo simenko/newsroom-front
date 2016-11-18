@@ -1,8 +1,6 @@
-import BaseDoInject from '../../BaseController';
+import InjectToBase from '../../InjectedBase';
 
-export const bindings = {};
-
-export class controller extends BaseDoInject('$scope $timeout $stateParams moment stories session users realtime') {
+export class controller extends InjectToBase('$scope $timeout $stateParams moment stories session users realtime') {
   constructor(...args) {
     super(...args);
 

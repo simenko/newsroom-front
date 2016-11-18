@@ -1,8 +1,6 @@
-import BaseDoInject from '../../BaseController';
+import InjectToBase from '../../InjectedBase';
 
-export const bindings = {};
-
-export class controller extends BaseDoInject('$rootScope $state users session') {
+export class controller extends InjectToBase('$rootScope $state users session') {
   constructor(...args) {
     super(...args);
 

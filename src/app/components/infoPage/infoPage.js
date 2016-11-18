@@ -2,11 +2,9 @@ import help from './help.html';
 import about from './about.html';
 
 
-import BaseDoInject from '../../BaseController';
+import InjectToBase from '../../InjectedBase';
 
-export const bindings = {};
-
-export class controller extends BaseDoInject('$stateParams') {
+export class controller extends InjectToBase('$stateParams') {
   constructor(...args) {
     super(...args);
 

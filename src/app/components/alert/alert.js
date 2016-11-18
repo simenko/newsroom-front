@@ -1,8 +1,6 @@
-import BaseDoInject from '../../BaseController';
+import InjectToBase from '../../InjectedBase';
 
-export const bindings = {};
-
-export class controller extends BaseDoInject('alerts') {
+export class controller extends InjectToBase('alerts') {
   constructor(...args) {
     super(...args);
   }
