@@ -1,3 +1,5 @@
+<div ng-click="$ctrl.userInput()"
+     ng-keydown="$ctrl.userInput()">
 <div class="panel panel-danger text-center"
      ng-show="$ctrl.error">
   <div class="panel-body" ng-bind="$ctrl.error">
@@ -39,6 +41,7 @@
     <label>hours from now</label>
   </div>
 </form>
+  <hr />
 <p class="preview-header"
    ng-show="$ctrl.preview">
   Preview:
@@ -63,3 +66,4 @@
   </div>
 </form>
 
+</div>

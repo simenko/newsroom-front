@@ -7,7 +7,7 @@ const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 module.exports = {
   context: path.resolve('./src'),
-  devtool: 'cheap-module-source-map',
+  devtool: 'source-map',
   entry: {
     app: ['./index.js']
   },

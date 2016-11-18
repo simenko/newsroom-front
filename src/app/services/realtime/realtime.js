@@ -13,12 +13,14 @@ export default class realtime {
       transports: ['websocket'],
       upgrade: false
     });
-    this.throttlingDelay = 300;
+
+    this.throttlingDelay = 500;
+    this.oldVal = null;
     this.newVal = null;
   }
 
-  startEditing(onChanges) {
-    this.socket.emit('startEditing', this.session.currentStory._id);
+  joinStory(onChanges) {
+    this.socket.emit('joinStory', this.session.currentStory._id);
     this.socket.on('changes', onChanges);
     this.socket.on('editRequest', (user) => {
       this.$rootScope.$broadcast('alert', { msg: `${user} wants to edit this story`, type: 'warning' });
@@ -44,8 +46,9 @@ export default class realtime {
     return this.watcher.bind(this);
   }
 
-  watcher(newVal) {
+  watcher(newVal, oldVal) {
     if (!this.newVal) {
+      this.oldVal = oldVal;
       this.$timeout(() => {
         this.socket.emit('update', newVal);
         this.newVal = null;
