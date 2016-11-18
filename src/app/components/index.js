@@ -9,6 +9,7 @@ import './storyEditor';
 import './storyDashboard';
 import './storyContent';
 import './mainFeed';
+import './alert';
 
 export default ng.module('app.components', [
   'app.components.app',
@@ -20,4 +21,5 @@ export default ng.module('app.components', [
   'app.components.storyContent',
   'app.components.storyDashboard',
   'app.components.mainFeed',
+  'app.components.alert',
 ]).name;

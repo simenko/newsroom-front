@@ -3,9 +3,10 @@
 import * as io from 'socket.io-client';
 
 export default class realtime {
-  constructor($timeout, session) {
+  constructor($rootScope, $timeout, session) {
     'ngInject';
 
+    this.$rootScope = $rootScope;
     this.$timeout = $timeout;
     this.session = session;
     this.socket = io.connect(env.SOCKETS_URL, {
@@ -19,6 +20,24 @@ export default class realtime {
   startEditing(onChanges) {
     this.socket.emit('startEditing', this.session.currentStory._id);
     this.socket.on('changes', onChanges);
+    this.socket.on('editRequest', (user) => {
+      this.$rootScope.$broadcast('alert', { msg: `${user} wants to edit this story`, type: 'warning' });
+    });
+  }
+
+  editRequest() {
+    this.socket.emit('editRequest');
+    return new Promise((resolve, reject) => {
+      this.socket.once('editingGranted', () => resolve());
+      this.socket.once('lockedBy', (locker) => {
+        this.$rootScope.$broadcast('alert', { msg: `Editing is locked by ${locker}`, type: 'danger' });
+        reject(locker);
+      });
+    });
+  }
+
+  stopEditing() {
+    this.socket.emit('stopEditing');
   }
 
   setWatcher() {
