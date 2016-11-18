@@ -1,6 +1,11 @@
 import ng from 'angular';
-import storyEditorComponent from './storyEditor.component';
+import './storyEditor.less';
+import template from './storyEditor.html';
+import { bindings, controller } from './storyEditor';
 
 export default ng.module('app.components.storyEditor', [])
-  .component('storyEditor', storyEditorComponent)
-  .name;
+  .component('storyEditor', {
+    template,
+    controller,
+    bindings,
+  }).name;

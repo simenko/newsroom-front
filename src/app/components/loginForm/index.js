@@ -1,6 +1,11 @@
 import ng from 'angular';
-import loginFormComponent from './loginForm.component';
+import template from './loginForm.html';
+import './loginForm.less';
+import { bindings, controller } from './loginForm';
 
 export default ng.module('app.components.loginForm', [])
-  .component('loginForm', loginFormComponent)
-  .name;
+  .component('loginForm', {
+    template,
+    controller,
+    bindings,
+  }).name;

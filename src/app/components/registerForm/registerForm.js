@@ -1,10 +1,11 @@
-export default class registerFormController {
-  constructor($state, users, session) {
-    'ngInject';
+import BaseDoInject from '../../BaseController';
 
-    this.session = session;
-    this.$state = $state
-    this.users = users;
+export const bindings = {};
+
+export class controller extends BaseDoInject('$state users session') {
+  constructor(...args) {
+    super(...args);
+
     this.credentials = {
       name: '',
       email: '',

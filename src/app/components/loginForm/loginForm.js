@@ -1,11 +1,12 @@
-export default class loginFormController {
-  constructor($rootScope, $state, users, session) {
-    'ngInject';
+import BaseDoInject from '../../BaseController';
 
-    $rootScope.$on('logout', () => this.error = null);
-    this.session = session;
-    this.$state = $state;
-    this.users = users;
+export const bindings = {};
+
+export class controller extends BaseDoInject('$rootScope $state users session') {
+  constructor(...args) {
+    super(...args);
+
+    this.$rootScope.$on('logout', () => { this.error = null; });
     this.credentials = {
       email: '',
       password: '',

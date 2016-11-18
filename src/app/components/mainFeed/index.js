@@ -1,6 +1,11 @@
 import ng from 'angular';
-import mainFeedComponent from './mainFeed.component';
+import template from './mainFeed.html';
+import './mainFeed.less';
+import { bindings, controller } from './mainFeed';
 
 export default ng.module('app.components.mainFeed', [])
-  .component('mainFeed', mainFeedComponent)
-  .name;
+  .component('mainFeed', {
+    template,
+    controller,
+    bindings,
+  }).name;

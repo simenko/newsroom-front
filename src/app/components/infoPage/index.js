@@ -1,6 +1,11 @@
 import ng from 'angular';
-import infoPageComponent from './infoPage.component';
+import template from './infoPage.html';
+import './infoPage.less';
+import { bindings, controller } from './infoPage';
 
 export default ng.module('app.components.infoPage', [])
-  .component('infoPage', infoPageComponent)
-  .name;
+  .component('infoPage', {
+    template,
+    controller,
+    bindings,
+  }).name;

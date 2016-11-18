@@ -1,11 +1,11 @@
-export default class {
-  constructor($state, stories, users, session) {
-    'ngInject';
+import BaseDoInject from '../../BaseController';
 
-    this.$state = $state;
-    this.users = users;
-    this.stories = stories;
-    this.session = session;
+export const bindings = {};
+
+export class controller extends BaseDoInject('$state stories users session') {
+  constructor(...args) {
+    super(...args);
+
     this.isNavCollapsed = true;
     this.displayedCollection = [].concat(this.stories.all);
   }

@@ -1,6 +1,11 @@
 import ng from 'angular';
-import storyContentComponent from './storyContent.component';
+import template from './storyContent.html';
+import './storyContent.less';
+import { bindings, controller } from './storyContent';
 
 export default ng.module('app.components.storyContent', [])
-  .component('storyContent', storyContentComponent)
-  .name;
+  .component('storyContent', {
+    template,
+    controller,
+    bindings,
+  }).name;
