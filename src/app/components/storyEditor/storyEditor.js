@@ -1,23 +1,20 @@
-import InjectToBase from '../../InjectedBase';
+import BaseAndInjects from '../../InjectedBase';
 
-export class controller extends InjectToBase('$scope $timeout $stateParams moment stories session users realtime') {
+export class controller extends BaseAndInjects('$scope $stateParams moment stories session users realtime') {
   constructor(...args) {
     super(...args);
 
-    this.preview = false;
     this.storyBuffer = {};
-    this.error = null;
-    this.hoursToDeadline = null;
+    this.permanentLock = null;
+    this.temporaryLock = null;
   }
 
   $postLink() {
-    if (this.session.currentUser.role === 'editor') {
-      this.possibleAssignees = this.users.all;
-    } else {
-      this.possibleAssignees = [this.session.currentUser];
-    }
     this.stories.readDetails(this.$stateParams._id)
-      .then(() => { this.storyBuffer = this.session.currentStory; });
+      .then(() => {
+        this.storyBuffer = this.session.currentStory;
+        this.permanentLock = !!this.storyBuffer.locked_by;
+      });
     this.realtime.joinStory(this.updateBuffer.bind(this));
   }
 
@@ -29,20 +26,22 @@ export class controller extends InjectToBase('$scope $timeout $stateParams momen
     this.realtime.editRequest()
       .then(() => {
         this.$scope.$watch('$ctrl.storyBuffer', this.realtime.setWatcher(), true);
+        this.temporaryLock = null;
       })
       .catch((locker) => {
-        this.lockedBy = locker;
+        this.temporaryLock = locker;
       });
   }
 
   updateBuffer(diff) {
-    this.$timeout(() => Object.assign(this.storyBuffer, diff));
+    this.$scope.$evalAsync(() => {
+      Object.assign(this.storyBuffer, diff);
+      if (this.storyBuffer.locked_by) this.permanentLock = true;
+    });
   }
 
-  saveStory() {
-    this.stories.update(this.storyBuffer)
-      .then(() => this.realtime.stopEditing())
-      .catch(err => this.error = JSON.stringify(err));
+  toggleLockStatus() {
+    this.storyBuffer.locked_by = this.permanentLock ? this.session.currentUser : null;
   }
 
   alertOnPublish() {
