@@ -2,9 +2,9 @@ import help from './help.html';
 import about from './about.html';
 
 
-import InjectToBase from '../../InjectedBase';
+import BaseAndInjects from '../../InjectedBase';
 
-export class controller extends InjectToBase('$stateParams') {
+export class controller extends BaseAndInjects('$stateParams') {
   constructor(...args) {
     super(...args);
 

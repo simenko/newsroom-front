@@ -1,6 +1,6 @@
-import InjectToBase from '../../InjectedBase';
+import BaseAndInjects from '../../InjectedBase';
 
-export class controller extends InjectToBase('$state users session') {
+export class controller extends BaseAndInjects('$scope $state users session') {
   constructor(...args) {
     super(...args);
 

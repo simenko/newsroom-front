@@ -1,6 +1,6 @@
-import InjectToBase from '../../InjectedBase';
+import BaseAndInjects from '../../InjectedBase';
 
-export class controller extends InjectToBase('$state stories users session') {
+export class controller extends BaseAndInjects('$scope $state ngDialog stories users session') {
   constructor(...args) {
     super(...args);
 

@@ -1,6 +1,6 @@
-import InjectToBase from '../../InjectedBase';
+import BaseAndInjects from '../../InjectedBase';
 
-export class controller extends InjectToBase('stories') {
+export class controller extends BaseAndInjects('stories') {
   constructor(...args) {
     super(...args);
   }
