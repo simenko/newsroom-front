@@ -1,16 +1,11 @@
-<div class="row">
-  <div class="panel panel-danger text-center"
-       ng-show="$ctrl.error">
-    <div class="panel-body" ng-bind="$ctrl.error">
-    </div>
-  </div>
-</div>
-
 <div class="story-content--" ng-if="!$ctrl.error">
-  <span class="story-content--author-date"
-        ng-hide="$ctrl.preview">
-    {{$ctrl.story.assignee.name || $ctrl.session.currentUser.name}} published {{$ctrl.moment($ctrl.story.published_at || Date.now()).fromNow()}}
-  </span>
-  <h2 class="story-content--title" ng-bind="$ctrl.story.title"></h2>
+  <p class="story-content--author-date">
+    {{$ctrl.story.created_by.name || $ctrl.session.currentUser.name}} published {{$ctrl.moment($ctrl.story.published_at
+    || Date.now()).fromNow()}}
+  </p>
+  <a ui-sref="story({_id: $ctrl.story._id})"><h2 class="story-content--title"
+                                                 ng-bind="$ctrl.story.title"></h2></a><a
+  ui-sref="editStory({_id: $ctrl.story._id})" class="glyphicon glyphicon-edit story-content--edit-link"
+  ng-show="$ctrl.session.currentUser"></a>
   <div class="story-content--body" ng-bind-html="$ctrl.story.content"></div>
 </div>
