@@ -18,8 +18,8 @@ export class controller extends BaseAndInjects('$scope $state ngDialog stories u
   }
 
   createStory() {
-    this.stories.create({ created_by: this.session.currentUser._id })
-      .then((story) => this.$state.go('editStory', { _id: story._id }));
+    this.stories.create({ created_by: this.session.currentUser._id})
+      .then(story => this.$state.go('editStory', { _id: story._id }));
   }
 
   removeStory(story) {
@@ -35,6 +35,4 @@ export class controller extends BaseAndInjects('$scope $state ngDialog stories u
         .then(() => this.stories.listMetadata());
     });
   }
-
-
 }

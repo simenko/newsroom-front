@@ -2,38 +2,38 @@
   <thead>
   <tr>
     <th colspan="1">
-      <input st-search="title" class="form-control" placeholder="Search by title" type="text">
-    </th>
-    <th colspan="1">
-      <select st-search="assignee.name" st-input-event="change" class="form-control"
+      <select st-search="created_by.name" st-input-event="change" class="form-control"
               placeholder="author">
-        <option value="" selected>Select assignee</option>
+        <option value="" selected>Author</option>
         <option ng-repeat="user in $ctrl.users.all">{{user.name}}</option>
       </select>
     </th>
     <th colspan="1">
+      <input st-search="title" class="form-control" placeholder="Search by title" type="text">
+    </th>
+    <th colspan="1">
       <select st-search="stage" st-input-event="change" class="form-control"
               placeholder="stage">
-        <option value="" selected>Select stage</option>
+        <option value="" selected>Stage</option>
         <option ng-repeat="stage in $ctrl.stories.stages">{{stage}}</option>
       </select>
     </th>
-    <th st-sort="created_at" st-sort-default="reverse">Sort by age</th>
-    <th st-sort="deadline_at" st-sort-default="reverse">Sort by deadline</th>
+    <th st-sort="created_at" st-sort-default="reverse">Created</th>
+    <th st-sort="published_at" st-sort-default="reverse">Published</th>
     <th>
       <button class="btn btn-success" ng-click="$ctrl.createStory()">New story</button>
     </th>
   </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="row in $ctrl.displayedCollection">
-    <td><a ui-sref="editStory({ _id: row._id })">{{::row.title}}</a></td>
-    <td>{{::row.assignee.name}}</td>
-    <td>{{::row.stage}}</td>
-    <td am-time-ago="row.created_at"></td>
-    <td am-time-ago="row.deadline_at"></td>
+  <tr ng-repeat="story in $ctrl.displayedCollection">
+    <td>{{::story.created_by.name}}</td>
+    <td><a ui-sref="editStory({ _id: story._id })">{{::story.title}}</a></td>
+    <td>{{::story.stage}}</td>
+    <td am-time-ago="story.created_at"></td>
+    <td am-time-ago="story.published_at"></td>
     <td><span class="glyphicon glyphicon-remove-sign story-grid--remove-btn"
-              ng-click="$ctrl.removeStory(row._id)"></span></td>
+              ng-click="$ctrl.removeStory(story)"></span></td>
   </tr>
   </tbody>
 </table>
