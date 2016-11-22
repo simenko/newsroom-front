@@ -10,7 +10,6 @@ export class controller extends BaseAndInjects('$scope $state users session') {
       password: '',
       role: 'author',
     };
-    this.error = null;
   }
 
   $onInit() {
@@ -19,13 +18,13 @@ export class controller extends BaseAndInjects('$scope $state users session') {
 
   checkIfLoggedIn() {
     if (this.session.currentUser.loggedIn) {
-      this.error = 'You are already logged in. Log out to register another account.';
+      this.$scope.$emit('alert', { msg: 'You are already logged in. Log out to register another account.', ttl: 60000 });
     }
   }
 
   register() {
     this.users.register(this.credentials)
       .then(() => this.$state.go('home'))
-      .catch((err) => alert(JSON.stringify(err.data)));
+      .catch(err => this.$scope.$emit('alert', { msg: JSON.stringify(err.data.errmsg), type: 'danger', ttl: 60000 }));
   }
 }

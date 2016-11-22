@@ -9,12 +9,11 @@ export class controller extends BaseAndInjects('$rootScope $state users session'
       email: '',
       password: '',
     };
-    this.error = null;
   }
 
   $onInit() {
     if (this.session.currentUser.loggedIn) {
-      this.error = 'You are already logged in.';
+      this.$rootScope.$broadcast('alert', { msg: 'You are already logged in.', type: 'danger', ttl: 60000 });
     }
   }
 
@@ -23,9 +22,9 @@ export class controller extends BaseAndInjects('$rootScope $state users session'
       .then(() => this.$state.go('home'))
       .catch((err) => {
         if (err.status === 401) {
-          this.error = 'Login incorrect. Please, try again.';
+          this.$rootScope.$broadcast('alert', { msg: 'Login incorrect. Please, try again.', type: 'danger' });
         } else {
-          this.error = 'Oops! Something went wrong... Please, try again.';
+          this.$rootScope.$broadcast('alert', { msg: 'Oops! Something went wrong... Please, try again.' });
         }
       });
   }

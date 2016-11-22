@@ -22,6 +22,10 @@ export class controller extends InjectToBase('$scope $timeout $stateParams momen
   }
 
   userInput() {
+    if (this.permanentLock && this.session.currentUser.role !== 'editor') {
+      this.$scope.$emit('alert', { msg: `Editing is locked by ${this.storyBuffer.locked_by.name}`, type: 'danger' })
+      return;
+    }
     this.realtime.editRequest()
       .then(() => {
         this.$scope.$watch('$ctrl.storyBuffer', this.realtime.setWatcher(), true);
@@ -41,9 +45,12 @@ export class controller extends InjectToBase('$scope $timeout $stateParams momen
       .catch(err => this.error = JSON.stringify(err));
   }
 
-  setDeadline() {
-    this.storyBuffer.deadline_at = this.moment()
-      .add(this.hoursToDeadline, 'hours')
-      .toDate();
+  alertOnPublish() {
+    if (this.storyBuffer.stage === 'published') {
+      this.$scope.$emit('alert', { msg: 'You have published the story.', type: 'success' });
+    }
+    if (this.storyBuffer.published_at && this.storyBuffer.stage !== 'published') {
+      this.$scope.$emit('alert', { msg: 'You have unpublished the story. Unregistered users will not see it anymore.' });
+    }
   }
 }
