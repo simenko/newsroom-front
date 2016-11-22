@@ -13,7 +13,9 @@ import 'textangular/dist/textAngular.css';
 import 'angular-smart-table';
 import 'angular-moment';
 import 'angular-ui-router/release/angular-ui-router';
-
+import 'ng-dialog/css/ngDialog.css';
+import 'ng-dialog/css/ngDialog-theme-plain.css';
+import 'ng-dialog/js/ngDialog';
 /**
  * FIXME: Since version 1.0.0 ui-router does not use state change events. I use legacy method
  * to authenticate routes, because it is well documented and it just works.
@@ -31,6 +33,7 @@ export default ng.module('app', [
   'angularMoment',
   'ui.router',
   'ui.router.state.events',
+  'ngDialog',
   'app.components',
   'app.services',
   'app.routes',

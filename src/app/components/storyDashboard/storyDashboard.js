@@ -22,8 +22,18 @@ export class controller extends BaseAndInjects('$scope $state ngDialog stories u
       .then((story) => this.$state.go('editStory', { _id: story._id }));
   }
 
-  removeStory(_id) {
-    this.stories.remove(_id);
+  removeStory(story) {
+    if (story.locked_by && this.session.currentUser.role !== 'editor') {
+      this.$scope.$emit('alert', { msg: `This story is locked by ${story.locked_by.name}.` });
+      return;
+    }
+    this.ngDialog.openConfirm({
+      template: 'ConfirmDeletionDialog',
+      className: 'ngdialog-theme-plain'
+    }).then(() => {
+      this.stories.remove(story._id)
+        .then(() => this.stories.listMetadata());
+    });
   }
 
 

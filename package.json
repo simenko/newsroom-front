@@ -24,6 +24,7 @@
     "moment": "^2.15.1",
     "morgan": "~1.7.0",
     "ng-annotate": "^1.2.1",
+    "ng-dialog": "^0.6.4",
     "ng-strict-di": "^2.0.0",
     "roboto-font": "^0.1.0",
     "serve-favicon": "~2.3.0",
