@@ -1,8 +1,9 @@
 <div class="alerts">
   <div uib-alert
-       ng-repeat="alert in $ctrl.alerts.que"
+       ng-repeat="alert in $ctrl.alerts track by $index"
        ng-class="'alert-' + (alert.type || 'warning')"
-       close="closeAlert($index)">
+       close="$ctrl.closeAlert($index)"
+       dismiss-on-timeout="{{alert.ttl || 5000}}">
     {{alert.msg}}
   </div>
 </div>
