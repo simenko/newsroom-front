@@ -1,14 +1,10 @@
 /* global env */
-
 import * as io from 'socket.io-client';
+import BaseAndInjects from '../../InjectedBase';
 
-export default class realtime {
-  constructor($rootScope, $timeout, session) {
-    'ngInject';
-
-    this.$rootScope = $rootScope;
-    this.$timeout = $timeout;
-    this.session = session;
+export default class realtime extends BaseAndInjects('$rootScope $timeout session') {
+  constructor(...args) {
+    super(...args);
     this.socket = io.connect(env.SOCKETS_URL, {
       transports: ['websocket'],
       upgrade: false

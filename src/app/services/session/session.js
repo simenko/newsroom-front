@@ -1,9 +1,10 @@
 /* global localStorage */
 
-export default class session {
-  constructor() {
-    'ngInject';
+import BaseAndInjects from '../../InjectedBase';
 
+export default class session extends BaseAndInjects('$http users') {
+  constructor(...args) {
+    super(...args);
     if (localStorage.currentUser) {
       this.currentUser = JSON.parse(localStorage.currentUser);
     } else {

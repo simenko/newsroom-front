@@ -1,11 +1,10 @@
 /* global env */
 
-export default class stories {
-  constructor($http, session) {
-    'ngInject';
+import BaseAndInjects from '../../InjectedBase';
 
-    this.$http = $http;
-    this.session = session;
+export default class stories extends BaseAndInjects('$http session') {
+  constructor(...args) {
+    super(...args);
     this.all = [];
     this.stages = ['idea', 'draft', 'ready to review', 'ready to publish', 'published', 'archived'];
   }

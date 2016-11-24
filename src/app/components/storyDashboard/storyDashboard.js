@@ -1,6 +1,6 @@
 import BaseAndInjects from '../../InjectedBase';
 
-export class controller extends BaseAndInjects('$scope $state ngDialog stories users session') {
+export default class controller extends BaseAndInjects('$scope $state ngDialog stories session') {
   constructor(...args) {
     super(...args);
 

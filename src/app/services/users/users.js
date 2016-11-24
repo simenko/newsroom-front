@@ -1,12 +1,9 @@
 /* global env */
+import BaseAndInjects from '../../InjectedBase';
 
-export default class users {
-  constructor($http, session) {
-    'ngInject';
-
-    this.$http = $http;
-    this.session = session;
-    this.all = [];
+export default class users extends BaseAndInjects('$http') {
+  constructor(...args) {
+    super(...args);
     this.roles = ['author', 'editor'];
   }
 

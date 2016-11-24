@@ -1,6 +1,6 @@
 import BaseAndInjects from '../../InjectedBase';
 
-export class controller extends BaseAndInjects('$rootScope $state users session') {
+export default class controller extends BaseAndInjects('$rootScope $state session') {
   constructor(...args) {
     super(...args);
 

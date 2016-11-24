@@ -1,6 +1,6 @@
 import BaseAndInjects from '../../InjectedBase';
 
-export class controller extends BaseAndInjects('$rootScope') {
+export default class controller extends BaseAndInjects('$rootScope') {
   constructor(...args) {
     super(...args);
 

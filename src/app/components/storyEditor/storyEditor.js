@@ -1,6 +1,6 @@
 import BaseAndInjects from '../../InjectedBase';
 
-export class controller extends BaseAndInjects('$scope $stateParams moment stories session users realtime') {
+export default class controller extends BaseAndInjects('$scope $stateParams moment stories session realtime') {
   constructor(...args) {
     super(...args);
 

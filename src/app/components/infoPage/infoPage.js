@@ -4,7 +4,7 @@ import about from './about.html';
 
 import BaseAndInjects from '../../InjectedBase';
 
-export class controller extends BaseAndInjects('$stateParams') {
+export default class controller extends BaseAndInjects('$stateParams') {
   constructor(...args) {
     super(...args);
 

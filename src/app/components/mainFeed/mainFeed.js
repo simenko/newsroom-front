@@ -1,10 +1,6 @@
 import BaseAndInjects from '../../InjectedBase';
 
-export class controller extends BaseAndInjects('stories') {
-  constructor(...args) {
-    super(...args);
-  }
-
+export default class controller extends BaseAndInjects('stories') {
   $onInit() {
     this.stories.list();
   }

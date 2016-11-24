@@ -1,7 +1,7 @@
 import ng from 'angular';
 import template from './registerForm.html';
 import './registerForm.less';
-import { bindings, controller } from './registerForm';
+import controller, { bindings } from './registerForm';
 
 export default ng.module('app.components.registerForm', [])
   .component('registerForm', {
