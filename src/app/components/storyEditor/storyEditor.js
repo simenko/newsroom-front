@@ -49,7 +49,8 @@ export default class controller extends BaseAndInjects('$scope $stateParams mome
       this.$scope.$emit('alert', { msg: 'You have published the story.', type: 'success' });
     }
     if (this.storyBuffer.published_at && this.storyBuffer.stage !== 'published') {
-      this.$scope.$emit('alert', { msg: 'You have unpublished the story. Unregistered users will not see it anymore.' });
+      this.$scope.$emit('alert',
+        { msg: 'You have unpublished the story. Unregistered users will not see it anymore.' });
     }
   }
 }

@@ -9,11 +9,6 @@ export default class controller extends BaseAndInjects('$scope $state ngDialog s
   }
 
   $onInit() {
-    this.init();
-  }
-
-  init() {
-    this.users.list();
     this.stories.listMetadata();
   }
 

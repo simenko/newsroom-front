@@ -13,12 +13,11 @@ export default class controller extends BaseAndInjects('$scope $state users sess
   }
 
   $onInit() {
-    this.checkIfLoggedIn();
-  }
-
-  checkIfLoggedIn() {
     if (this.session.currentUser.loggedIn) {
-      this.$scope.$emit('alert', { msg: 'You are already logged in. Log out to register another account.', ttl: 60000 });
+      this.$scope.$emit('alert', {
+        msg: 'You are already logged in. Log out to register another account.',
+        ttl: 60000
+      });
     }
   }
 
