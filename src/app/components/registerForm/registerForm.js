@@ -24,7 +24,10 @@ export default class controller extends BaseAndInjects('$scope $state users sess
 
   register() {
     this.users.register(this.credentials)
-      .then(() => this.$state.go('home'))
+      .then((user) => {
+        this.session.login(this.credentials);
+        this.$state.go('dashboard');
+      })
       .catch(err => this.$scope.$emit('alert', { msg: JSON.stringify(err.data.errmsg), type: 'danger', ttl: 60000 }));
   }
 }

@@ -10,8 +10,8 @@ export default ng.module('app.routes', [])
       url: '/',
       component: 'mainFeed',
     }, {
-      name: 'newsroom',
-      url: '/newsroom',
+      name: 'dashboard',
+      url: '/dashboard',
       component: 'storyDashboard',
       authenticate: true,
     }, {

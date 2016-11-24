@@ -18,8 +18,8 @@ export default class controller extends BaseAndInjects('$rootScope $state sessio
   }
 
   login() {
-    this.users.login(this.credentials)
-      .then(() => this.$state.go('home'))
+    this.session.login(this.credentials)
+      .then(() => this.$state.go('dashboard'))
       .catch((err) => {
         if (err.status === 401) {
           this.$rootScope.$broadcast('alert', { msg: 'Login incorrect. Please, try again.', type: 'danger' });
