@@ -5,7 +5,7 @@
       <select st-search="created_by.name" st-input-event="change" class="form-control"
               placeholder="author">
         <option value="" selected>Author</option>
-        <option ng-repeat="user in $ctrl.users.all">{{user.name}}</option>
+        <option ng-repeat="user in $ctrl.session.allUsers">{{user.name}}</option>
       </select>
     </th>
     <th colspan="1">

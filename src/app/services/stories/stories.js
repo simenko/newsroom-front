@@ -10,29 +10,33 @@ export default class stories extends BaseAndInjects('$http session') {
   }
 
   list() {
-    return this.$http.get(`${env.API_URL}/stories`).then((res) => {
-      this.all = res.data;
-    });
+    return this.$http.get(`${env.API_URL}/stories`)
+      .then((res) => {
+        this.all = res.data;
+      });
   }
 
   listMetadata() {
-    return this.$http.get(`${env.API_URL}/stories/metadata`).then((res) => {
-      this.all = res.data;
-    });
+    return this.$http.get(`${env.API_URL}/stories/metadata`)
+      .then((res) => {
+        this.all = res.data;
+      });
   }
 
   read(_id) {
-    return this.$http.get(`${env.API_URL}/stories/${_id}`).then(res => {
-      this.session.setStory(res.data);
-      return res.data;
-    });
+    return this.$http.get(`${env.API_URL}/stories/${_id}`)
+      .then((res) => {
+        this.session.setStory(res.data);
+        return res.data;
+      });
   }
 
   readDetails(_id) {
-    return this.$http.get(`${env.API_URL}/stories/details/${_id}`).then(res => {
-      this.session.setStory(res.data);
-      return res.data;
-    });
+    return this.$http.get(`${env.API_URL}/stories/details/${_id}`)
+      .then((res) => {
+        this.session.setStory(res.data);
+        return res.data;
+      });
   }
 
   create(story) {

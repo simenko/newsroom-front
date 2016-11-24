@@ -7,35 +7,16 @@ export default class users extends BaseAndInjects('$http') {
     this.roles = ['author', 'editor'];
   }
 
+  register(user) {
+    return this.$http.post(`${env.API_URL}/users`, user).then(res => res.data);
+  }
+
   list() {
-    return this.$http.get(`${env.API_URL}/users`).then((res) => {
-      this.all = res.data;
-    });
+    return this.$http.get(`${env.API_URL}/users`).then(res => res.data);
   }
 
   read(_id) {
-    return this.$http.get(`${env.API_URL}/users/${_id}`)
-      .then(res => {
-        this.session.setUser(res.data);
-      })
-      .catch(() => {
-        this.session.unsetUser();
-      });
-  }
-
-  register(user) {
-    return this.$http.post(`${env.API_URL}/users/register`, user)
-      .then(res => this.session.setUser(res.data));
-  }
-
-  login(user) {
-    return this.$http.post(`${env.API_URL}/users/login`, user)
-      .then(res => this.session.setUser(res.data));
-  }
-
-  logout() {
-    this.session.unsetUser()
-    return this.$http.post(`${env.API_URL}/users/logout`);
+    return this.$http.get(`${env.API_URL}/users/${_id}`).then(res => res.data);
   }
 
   update(user) {

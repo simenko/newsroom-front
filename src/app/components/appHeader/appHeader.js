@@ -9,7 +9,7 @@ export default class controller extends BaseAndInjects('$rootScope $state sessio
 
   logout() {
     this.$rootScope.$emit('logout');
-    // TODO: move login/logout logic to session service
-    this.users.logout();
+    this.session.logout();
+    this.$state.go('home');
   }
 }
