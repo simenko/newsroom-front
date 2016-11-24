@@ -18,29 +18,29 @@ module.exports = {
   module: {
      loaders: [{
         test: /\.js$/,
-        loader: 'ng-annotate!babel?presets[]=es2015&presets[]=stage-0',
+        loader: 'ng-annotate-loader!babel-loader?presets[]=es2015&presets[]=stage-0',
         exclude: /node_modules/
       },
       // { test: /\.pug$/, loader: 'pug-html' },
       {
         test: /\.html$/,
-        loader: 'html?conservativeCollapse'
+        loader: 'html-loader?conservativeCollapse'
       }, {
         test: /\.less/,
         loader: ExtractTextPlugin.extract({
-          loader: 'css!less?sourceMap'
+          loader: 'css-loader!less-loader?sourceMap'
         })
       }, {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
-          loader: 'css'
+          loader: 'css-loader'
         })
       }, {
         test: /\.(png|jpe?g|.gif)$/,
-        loader: 'file?name=[path][name].[ext]'
+        loader: 'file-loader?name=[path][name].[ext]'
       }, {
         test: /\.(woff2?|ttf|eot|svg)(.*)?$/,
-        loader: 'file?name=fonts/[name].[ext]'
+        loader: 'file-loader?name=fonts/[name].[ext]'
       }
     ]
   },
